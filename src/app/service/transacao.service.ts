@@ -13,4 +13,8 @@ export class TransacaoService {
     public insertSaque(transacao) {
         return this.http.post<Transacao>(`${this.transacaoApiUrl}/saque`, transacao);
     }
+
+    public insertDeposito(transacao) {
+        return this.http.post<Transacao>(`${this.transacaoApiUrl}/deposito`, transacao);
+    }
 }
