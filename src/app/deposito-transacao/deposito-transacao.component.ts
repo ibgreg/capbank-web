@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 import { Transacao } from '../models/transacao.model';
 import { TransacaoService } from '../service/transacao.service';
@@ -19,12 +20,19 @@ export class DepositoTransacaoComponent implements OnInit {
     this.transacao.operacao = 2;
   }
 
-  depositar(): void {
-    this.transacaoService.insertDeposito(this.transacao)
-      .subscribe( data => {
-        alert("Depósito realizado com sucesso!");
-        console.log(data);
-      });
+  depositar(form: NgForm): void {
+    console.log(form);
+
+    if (form.valid) {
+      this.transacaoService.insertDeposito(this.transacao)
+        .subscribe( data => {
+          alert("Depósito realizado com sucesso!");
+          console.log(data);
+        });
+
+        form.reset();
+    }
+
   };
 
 }

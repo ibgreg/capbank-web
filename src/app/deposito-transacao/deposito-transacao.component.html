@@ -1,21 +1,37 @@
 <div class="col-md-6">
-  <h2 class="text-center">Realizar depósito</h2>
-  <form>
-    <div class="form-group">
-      <label for="numContaOrigem">Nº Conta Origem:</label>
-      <input [(ngModel)]="transacao.contaOrigem" name="numContaOrigem" class="form-control" id="numContaOrigem">
-    </div>
+  <div class="container">
+    <h2 class="text-center">Realizar Depósito</h2>
 
-    <div class="form-group">
-      <label for="numConta">Nº Conta Destino:</label>
-      <input [(ngModel)]="transacao.conta" name="numConta" class="form-control" id="numConta">
-    </div>
+    <form autocomplete="off" #depositoForm="ngForm" (ngSubmit)="depositar(depositoForm)">
+      <div class="form-group">
+        <label for="numContaOrigem" class="form-control-label">Nº Conta Origem: *</label>
+        <input [(ngModel)]="transacao.contaOrigem" name="numContaOrigem" class="form-control" id="numContaOrigem" #numContaOrigem="ngModel" required maxlength="6">
+
+        <div *ngIf="numContaOrigem.hasError('required') && (numContaOrigem.touched || depositoForm.submitted)" class="text-danger" >
+          Campo obrigatório
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="numConta" class="form-control-label">Nº Conta Destino: *</label>
+        <input [(ngModel)]="transacao.conta" name="numConta" class="form-control" id="numConta" #numConta="ngModel" required maxlength="6">
+
+        <div *ngIf="numConta.hasError('required') && (numConta.touched || depositoForm.submitted)" class="text-danger" >
+          Campo obrigatório
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="valor" class="form-control-label">Valor: *</label>
+        <input [(ngModel)]="transacao.valor" name="valor" class="form-control" id="valor" #valor="ngModel" required>
+
+        <div *ngIf="valor.hasError('required') && (valor.touched || depositoForm.submitted)" class="text-danger" >
+          Campo obrigatório
+        </div>
+      </div>
+    
+      <button class="btn btn-success" type="submit">Depositar</button>
+    </form>
+  </div>
   
-    <div class="form-group">
-      <label for="valor">Valor:</label>
-      <input [(ngModel)]="transacao.valor" name="valor" class="form-control" id="valor">
-    </div>
-  
-    <button class="btn btn-success" (click)="depositar()">Depositar</button>
-  </form>
 </div>
