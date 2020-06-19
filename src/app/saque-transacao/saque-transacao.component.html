@@ -1,0 +1,16 @@
+<div class="col-md-6">
+    <h2 class="text-center">Sacar Dinheiro</h2>
+  <form>
+    <div class="form-group">
+      <label for="numConta">Nº Conta:</label>
+      <input [(ngModel)]="transacao.conta" name="numConta" class="form-control" id="numConta">
+    </div>
+  
+    <div class="form-group">
+      <label for="valor">Valor:</label>
+      <input [(ngModel)]="transacao.valor" name="valor" class="form-control" id="valor">
+    </div>
+  
+    <button class="btn btn-success" (click)="sacar()">Sacar</button>
+  </form>
+</div>
