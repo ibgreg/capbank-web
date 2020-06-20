@@ -30,7 +30,7 @@ export class SaqueTransacaoComponent implements OnInit {
           console.log(data);
         });
       
-      form.reset();
+        form.resetForm();
     }
 
   };
