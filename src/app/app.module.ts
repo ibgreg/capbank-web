@@ -6,12 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SaqueTransacaoComponent } from './saque-transacao/saque-transacao.component';
-import { TransacaoService } from './service/transacao.service';
 import { DepositoTransacaoComponent } from './deposito-transacao/deposito-transacao.component';
+
+import { ContaService } from './service/conta.service';
+import { TransacaoService } from './service/transacao.service';
+import { ContaComponent } from './conta/conta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ContaComponent,
     SaqueTransacaoComponent,
     DepositoTransacaoComponent
   ],
@@ -21,7 +25,10 @@ import { DepositoTransacaoComponent } from './deposito-transacao/deposito-transa
     FormsModule,
     HttpClientModule
   ],
-  providers: [TransacaoService],
+  providers: [
+    ContaService,
+    TransacaoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

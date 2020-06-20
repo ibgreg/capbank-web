@@ -1,0 +1,39 @@
+<div class="row align-items-center">
+  <div class="col-md-6">
+    <div class="container">
+      <h2 class="text-center">Verificar saldo</h2>
+      <form autocomplete="off" #contaForm="ngForm" (ngSubmit)="obterSaldoConta(depositoForm)">
+        <div class="form-group">
+          <label for="numConta" class="form-control-label">Nº Conta: *</label>
+          <input [(ngModel)]="conta.numConta" name="numConta" class="form-control" id="numConta" #numConta="ngModel" required maxlength="6">
+  
+          <div *ngIf="numConta.hasError('required') && (numConta.touched || contaForm.submitted)" class="text-danger" >
+            Campo obrigatório
+          </div>
+        </div>
+      
+        <button class="btn btn-success" type="submit">Obter Saldo</button>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+
+<div class="col-md-6" *ngIf="conta">
+  <div class="card">
+    <h5 class="card-header">Saldo</h5>
+    
+    <div class="card-body">
+      <div>
+        <label><b>Agência: </b></label> {{conta.numAgencia}}
+      </div>
+      <div>
+        <label><b>Conta: </b></label> {{conta.numConta}}
+      </div>
+      <div>
+        <label><b>Saldo atual: </b></label> {{conta.saldo}}
+      </div>
+    </div>
+  </div>
+</div>
